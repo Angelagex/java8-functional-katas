@@ -9,6 +9,7 @@ import util.DataUtil;
 
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /*
     Goal: Retrieve the largest rating using reduce()
@@ -18,7 +19,6 @@ import java.util.Map;
 public class Kata5 {
     public static Double execute() {
         List<Movie> movies = DataUtil.getMovies();
-
-        return 3.0;
+        return movies.stream().map(m -> m.getRating()).reduce((double) 0, (r1, r2) -> r1 > r2 ? r1 : r2);
     }
 }
